@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>Ferretería</h1>
+
+    {{#if products.length}}
+    <div class="product">
+        {{#each products}}
+        <div class="product">
+            <h2>{{this.product}}</h2>
+            <p>{{this.description}}</p>
+            <p>Precio: {{this.price}}</p>
+            <a href="/products/{{this._id}}">Ver más</a>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <p>No hay productos disponibles en este momento.</p>
+    {{/if}}
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+/* para que funcionen los estilos será necesario indicarle a nuestro servidor, app.js donde se encuentran los archivos estáticos, osea 
+donde está este archivo, ese archivo se denomina estático porque no cambia su contenido en función de la interacción del usuario o de cualquier 
+otro factor en tiempo real*/
+
+body {
+    background-color: grey;
+    }
+
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+        
