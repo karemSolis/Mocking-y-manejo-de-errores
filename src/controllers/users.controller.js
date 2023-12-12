@@ -1,5 +1,6 @@
 import usersDao from "../DAO/classes/users.dao.js"
-import {faker} from '@faker-js/faker'
+import EErrors from "../services/errors/enums.js";
+//import {faker} from '@faker-js/faker'
 
 const usersDaoInstance = new usersDao();
 
@@ -35,6 +36,10 @@ export const saveUser = async (req, res) => {
     }
 };
 
+
+
+/* 
+//------------------------------------------ faker
 // Función para generar usuario
 export const generateUser = async (req, res) => {
     let products = [];
@@ -61,3 +66,5 @@ export const generateProduct = async (req, res) => {
         description: faker.commerce.productDescription(),
     });
 };
+
+*/

@@ -8,6 +8,8 @@ import { getUsers, getUserById, saveUser } from "../controllers/users.controller
 
 //import { generateUser } from "../controllers/users.controller.js"; //faker
 import {generateUser} from "../utils.js"
+import { generateUserErrorInfo } from "../services/errors/info.js";
+import EErrors from "../services/errors/enums.js";
 
 
 
@@ -19,13 +21,26 @@ userRouter.post("/formRegister", passport.authenticate('formRegister',{failureRe
     try 
     {
         const { first_name, last_name, email, age, password, rol }= req.body
-        if (!first_name || !last_name || !email || !age)  return res.status(400).send({ status: 400, error: 'Faltan datos' })
+        if (!first_name || !last_name || !email || !age)  
+        //return res.status(400).send({ status: 400, error: 'Faltan datos' }) 
+//--------------------------------------------------------------------//manejo de errores desafío
+        CustomError.createError({ 
+        name:"error de creación de usuario", 
+        cause:generateUserErrorInfo({first_name, last_name, email, age, password, rol}),
+        message:"",
+        code:EErrors.INVALID_TYPES_ERROR
+        }) 
+//--------------------------------------------------------------------
+        
         res.redirect("/login")
     } catch (error) 
     {
         res.status(500).send("Error al acceder al registrar: " + error.message);
     }
 })
+
+
+
 
 
 userRouter.get("/failformRegister",async(req,res)=>{
@@ -136,7 +151,9 @@ userRouter.get("/mockingproducts", async (req, res) => {
 
     res.send({ status: "success", payload: users })
 })
-  
+
+//-------------------------------------------------Errores
+
 
 //-------------------------------------------------
 

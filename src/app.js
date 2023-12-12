@@ -85,6 +85,7 @@ app.use(passport.session())
  //Desafío mocking y manejo de errores
  app.use("/api/mockingproducts", userRouter);
 
+ 
 app.use("/api/productos", productRouter) 
 app.use("/api/carritos", CartRouter);
 app.use("/api/sessions", userRouter)
